@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { HeaderApp } from './components/ui-components/header';
 import MyImage from './components/ui-components/image';
+import IdCard, { Gender } from './components/ui-components/idCard';
+import ProductsPage from './components/pages/productsPage';
 
 const headerElement = <h1> React start App Element </h1>
 
@@ -10,6 +12,7 @@ function App() {
     return (
         <div className="App">
             <h1> React Start App </h1>
+            <ProductsPage />
             {headerElement}
             <HeaderApp text={"Home Page"} color={"rgba(254,220,15,0.5)"} />
             <HeaderApp text={"About Page"} />
@@ -18,6 +21,23 @@ function App() {
             </div>
             <div>
                 <MyImage image={""} />
+            </div>
+            <div>
+                <IdCard firstName='gal'
+                    lastName='amouyal'
+                    birth={new Date()}
+                    gender={Gender.MALE}
+                    height={1.81}
+                    picture={"https://avatars.githubusercontent.com/u/32986703?v=4"}
+                />
+                <IdCard firstName='yuval'
+                    lastName='b'
+                    birth={new Date()}
+                    gender={Gender.MALE}
+                    height={1.81}
+                    picture={"https://randomuser.me/api/portraits/med/men/29.jpg"}
+                />
+
             </div>
         </div>
     );
