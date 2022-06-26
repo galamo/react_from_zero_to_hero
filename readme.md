@@ -5,7 +5,7 @@
 3. check your npm version run `npm -v`
 
 #### Api's
-- [Products](https://dummyproducts-api.herokuapp.com/)
+- [Products](https://dummyjson.com/docs/products/)
 - [Countries](https://restcountries.com/v3.1/all)
 
 #### Creating React Typescript Application
