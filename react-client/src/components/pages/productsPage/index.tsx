@@ -1,10 +1,16 @@
-import react from "react"
+import react, { useEffect } from "react"
+import { useAppDispatch } from "../../../store/hooks"
+import { setUtc } from "../../../store/reducers/settingsReducers"
 import { HeaderApp } from "../../ui-components/header"
 import { Product } from "../../ui-components/product"
 
 type ProductType = typeof products.products[0]
 
 export default function ProductsPage() {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(setUtc())
+    }, [])
     return <div style={{ width: "500px", margin: "auto auto" }}>
         <HeaderApp text="Products Page" />
         <div>

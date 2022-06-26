@@ -6,27 +6,38 @@ import MyImage from './components/ui-components/image';
 import IdCard, { Gender } from './components/ui-components/idCard';
 import ProductsPage from './components/pages/productsPage';
 import { CountriesPage } from './components/pages/countriesPage';
+import ApplicationBar from './components/app-components/appBar';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const headerElement = <h1> React start App Element </h1>
 
+export const pages = [
+    {
+        element: <CountriesPage />,
+        key: "countriesPage",
+        path: "/",
+        label: "Countries"
+    },
+    {
+        element: <ProductsPage />,
+        key: "productsPage",
+        path: "/products",
+        label: "Products"
+    },
+]
+
 function App() {
     return (
-        <div className="App">
-            <h1> React Start App </h1>
-            {/* <IdCardList /> */}
-            <CountriesPage />
-            <ProductsPage />
-            {headerElement}
-            <HeaderApp text={"Home Page"} color={"rgba(254,220,15,0.5)"} />
-            <HeaderApp text={"About Page"} />
-            <div>
-                <MyImage image={"https://m.media-amazon.com/images/M/MV5BMTU4MzYzMzc4N15BMl5BanBnXkFtZTgwMTg3ODA3MzI@._V1_.jpg"} />
+        <BrowserRouter>
+            <div className="App">
+                <ApplicationBar />
+                <Routes>
+                    {pages.map(r => {
+                        return <Route  {...r} ></Route>
+                    })}
+                </Routes>
             </div>
-            <div>
-                <MyImage image={""} />
-            </div>
-
-        </div>
+        </BrowserRouter>
     );
 }
 

@@ -3,14 +3,16 @@ import { Country } from "../../ui-components/country"
 import { HeaderApp } from "../../ui-components/header"
 import axios from "axios"
 import TextField from '@mui/material/TextField';
+import WithLoading from "../../ui-components/with-loading";
+import { useAppDispatch } from "../../../store/hooks";
+import { setCounter } from "../../../store/reducers/settingsReducers";
 
 // type CountryType = typeof countries[0]
-
 export const CountriesPage = () => {
 
     const [countries, setCountries] = useState<Array<any>>([])
     const [filter, setFilter] = useState<string>("")
-
+    const dispatch = useAppDispatch()
     useEffect(() => {
         async function getCountries() {
             try {
@@ -22,6 +24,7 @@ export const CountriesPage = () => {
                 alert("Something went wrong")
             }
         }
+        dispatch(setCounter())
         getCountries()
     }, [filter])
 
@@ -31,10 +34,13 @@ export const CountriesPage = () => {
             <TextField onChange={(e: any) => {
                 setFilter(e.target.value)
             }} value={filter} id="outlined-basic" label="Filter" variant="outlined" />
-
-            {countries.map((cItem: any) => {
-                return <Country key={cItem.name.common} name={cItem.name.common} flag={cItem.flags.png} />
-            })}
+            <WithLoading isLoading={Boolean(!countries.length)}>
+                <div>
+                    {countries.map((cItem: any) => {
+                        return <Country key={cItem.name.common} name={cItem.name.common} flag={cItem.flags.png} />
+                    })}
+                </div>
+            </WithLoading>
         </div>
     </div>
 }
