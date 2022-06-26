@@ -5,6 +5,7 @@ import { HeaderApp } from './components/ui-components/header';
 import MyImage from './components/ui-components/image';
 import IdCard, { Gender } from './components/ui-components/idCard';
 import ProductsPage from './components/pages/productsPage';
+import { CountriesPage } from './components/pages/countriesPage';
 
 const headerElement = <h1> React start App Element </h1>
 
@@ -12,6 +13,8 @@ function App() {
     return (
         <div className="App">
             <h1> React Start App </h1>
+            {/* <IdCardList /> */}
+            <CountriesPage />
             <ProductsPage />
             {headerElement}
             <HeaderApp text={"Home Page"} color={"rgba(254,220,15,0.5)"} />
@@ -22,25 +25,35 @@ function App() {
             <div>
                 <MyImage image={""} />
             </div>
-            <div>
-                <IdCard firstName='gal'
-                    lastName='amouyal'
-                    birth={new Date()}
-                    gender={Gender.MALE}
-                    height={1.81}
-                    picture={"https://avatars.githubusercontent.com/u/32986703?v=4"}
-                />
-                <IdCard firstName='yuval'
-                    lastName='b'
-                    birth={new Date()}
-                    gender={Gender.MALE}
-                    height={1.81}
-                    picture={"https://randomuser.me/api/portraits/med/men/29.jpg"}
-                />
 
-            </div>
         </div>
     );
 }
+
+
+
+
+function IdCardList() {
+    return (
+        <div>
+            <IdCard firstName='gal'
+                lastName='amouyal'
+                birth={new Date()}
+                gender={Gender.MALE}
+                height={1.81}
+                picture={"https://avatars.githubusercontent.com/u/32986703?v=4"}
+            />
+            <IdCard firstName='yuval'
+                lastName='b'
+                birth={new Date()}
+                gender={Gender.MALE}
+                height={1.81}
+                picture={"https://randomuser.me/api/portraits/med/men/29.jpg"}
+            />
+
+        </div>
+    )
+}
+
 
 export default App;
